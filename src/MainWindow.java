@@ -58,7 +58,7 @@ public class MainWindow {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 751, 527);
+		frame.setBounds(100, 100, 751, 427);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
@@ -77,28 +77,12 @@ public class MainWindow {
 		
 		final TextArea textArea = new TextArea();
 		textArea.setEditable(false);
-		textArea.setBounds(35, 179, 674, 167);
+		textArea.setBounds(35, 187, 674, 167);
 		frame.getContentPane().add(textArea);
 		
 		JButton btnSearch = new JButton("Search");
-		btnSearch.setBounds(570, 114, 138, 48);
+		btnSearch.setBounds(549, 114, 138, 48);
 		frame.getContentPane().add(btnSearch);
-		
-		JLabel lblTitle = new JLabel("Title:");
-		lblTitle.setBounds(227, 360, 36, 15);
-		frame.getContentPane().add(lblTitle);
-		
-		final JTextPane textPane = new JTextPane();
-		textPane.setBounds(281, 404, 285, 79);
-		frame.getContentPane().add(textPane);
-		
-		JLabel lblBody = new JLabel("Body:");
-		lblBody.setBounds(224, 404, 50, 15);
-		frame.getContentPane().add(lblBody);
-		
-		JLabel lblPublishedAt = new JLabel("Published At:");
-		lblPublishedAt.setBounds(35, 375, 109, 15);
-		frame.getContentPane().add(lblPublishedAt);
 		
 		JButton btnLatestArticle = new JButton("Latest Article");
 		// If latest article button was pressed.
@@ -138,82 +122,34 @@ public class MainWindow {
 		
 		// Items involved with the article creation and
 		// article submission processes.
-		btnLatestArticle.setBounds(37, 114, 138, 48);
+		btnLatestArticle.setBounds(56, 114, 138, 48);
 		frame.getContentPane().add(btnLatestArticle);
-				
-		final JTextField textField_1 = new JTextField();
-
-		textField_1.setBounds(281, 352, 285, 31);
-		frame.getContentPane().add(textField_1);
-		textField_1.setColumns(10);
-		
-		final JMonthChooser monthChooser = new JMonthChooser();
-		monthChooser.setBounds(94, 400, 122, 19);
-		frame.getContentPane().add(monthChooser);
-		
-		final JSpinField spinField = new JSpinField();
-		spinField.setBounds(27, 400, 46, 19);
-		spinField.setMaximum(30);
-		spinField.setMinimum(1);
-		frame.getContentPane().add(spinField);
-		
-		final JYearChooser yearChooser = new JYearChooser();
-		yearChooser.setBounds(164, 431, 52, 19);
-		frame.getContentPane().add(yearChooser);
 		
 		JButton btnSubmit = new JButton("Create Article");
 		btnSubmit.addActionListener(new ActionListener() {
 			// If the create article button was pressed.
 			public void actionPerformed(ActionEvent e) {
-				// Submit the article contents to the API.
-				String title = textField_1.getText();
-				String body = textPane.getText();
-				int day = spinField.getValue();
-				int month = monthChooser.getMonth();
-				int year = yearChooser.getValue();
-				String articleContent = "title=" + title + "&body=" + body + "&published_at=" + year + "-" + month + "-" + day;
-				
-				try {
-				    // Create the URL, the request methods and properties, as well
-				    // as creating an HttpURL Connection that attaches the authenticated
-				    // user's credentials for authentication.
-		            URL url = new URL ("http://localhost:8888/api/v1/url/article");
-		            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-		            connection.setRequestMethod("POST");
-		            connection.setDoOutput(true);
-		            connection.setRequestProperty  ("Authorization", "Basic " + credentials);
-	            
-		            DataOutputStream wr = new DataOutputStream(connection.getOutputStream()); 		           
-		            // Send the URL parameters to the API.
-		            wr.writeBytes(articleContent);
-		            InputStream content = (InputStream)connection.getInputStream();
-		            // Use a buffered reader to read the output from the API.
-		            BufferedReader in = new BufferedReader (new InputStreamReader (content));
-		            String line;
-		            while ((line = in.readLine()) != null) {
-	            		if(line.contains("new_article")) {
-	            			textArea.setText("Your article has been created! Click the Latest Article button to see it.");
-	            		}
-		            }		           
-		        } catch(Exception e1) {
-		            e1.printStackTrace();
-		        }
+			  // Launch the article window.
+				ArticleWindow articleWindow = new ArticleWindow();
+				articleWindow.frame.setVisible(true);
+				articleWindow.credentials = credentials;
 			}
 		});
 		
-		btnSubmit.setBounds(578, 443, 131, 44);
+		btnSubmit.setBounds(383, 114, 154, 48);
 		frame.getContentPane().add(btnSubmit);
 		
 		JButton btnUpdateProfile = new JButton("Update Profile");
 		btnUpdateProfile.addActionListener(new ActionListener() {
 			// If update profile button is pressed.
 			public void actionPerformed(ActionEvent e) {
+			  // Launch the profile window.
 				ProfileWindow profileWindow = new ProfileWindow();
 				profileWindow.frame.setVisible(true);
 				profileWindow.credentials = credentials;
 			}
 		});
-		btnUpdateProfile.setBounds(187, 114, 165, 48);
+		btnUpdateProfile.setBounds(206, 114, 165, 48);
 		frame.getContentPane().add(btnUpdateProfile);
 		
 		btnSearch.addActionListener(new ActionListener() {
