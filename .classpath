@@ -17,6 +17,6 @@
 	<classpathentry kind="lib" path="/home/kevin/Downloads/commons-codec-1.10/commons-codec-1.10.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="/home/kevin/Downloads/json-20090211.jar"/>
-	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="/home/kevin/Downloads/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

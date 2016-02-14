@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Middle Earth Java" default="compile" basedir=".">
+	<property name="lib-dir" value="lib"/>
+    <property name="jar-dir"     value="${build-dir}/jar"/>
+	
+	<path id="project-classpath">
+		<fileset dir="/home/kevin/.p2/pool/plugins/" includes="*.jar" />
+		<fileset dir="/home/kevin/Downloads/" includes="*.jar" />
+	</path>
+	
+	<target name="clean">
+		<delete dir="bin" />
+		<mkdir dir="bin" />
+	</target>
+	
+	<target name="jar" depends="compile">
+		<mkdir dir="dist"/>
+		<jar destfile="dist/MidEarth.jar" basedir="/bin" includes="*.class" manifest="MANIFEST.MF">
+			<manifest file="MANIFEST.MF">
+         		<attribute name="Built-By" value="Kevin Elberger"/>
+         		<attribute name="Main-Class" value="LoginForm"/>
+         		<attribute name="Class-Path" value="."/>
+     		</manifest>
+		</jar>	
+	</target>
+		
+	<target name="compile" depends="clean">
+		<javac srcdir="src" destdir="bin" classpathref="project-classpath"
+				includeantruntime="false" />
+	</target>
+</project>

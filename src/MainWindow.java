@@ -14,11 +14,6 @@ import java.net.URL;
 import java.awt.event.ActionEvent;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import javax.swing.JTextPane;
-import com.toedter.calendar.JYearChooser;
-import com.toedter.calendar.JMonthChooser;
-import com.toedter.components.JSpinField;
-import javax.swing.JTabbedPane;
 
 public class MainWindow {
 
