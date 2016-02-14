@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+package com.middleearth.java;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -16,6 +16,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 
 public class ArticleWindow {
@@ -23,10 +24,8 @@ public class ArticleWindow {
   JFrame frame;
   private JTextField textField;
   protected String credentials;
+  
 
-  /**
-   * Launch the application.
-   */
   public static void main(String[] args) {
     EventQueue.invokeLater(new Runnable() {
       public void run() {
@@ -39,7 +38,6 @@ public class ArticleWindow {
       }
     });
   }
-
   /**
    * Create the application.
    */

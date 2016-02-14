@@ -1,4 +1,4 @@
-import java.awt.EventQueue;
+package com.middleearth.java;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -10,6 +10,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
 
 public class ProfileWindow {
@@ -17,22 +18,18 @@ public class ProfileWindow {
 	JFrame frame;
 	protected String credentials;
 
-	/**
-	 * Launch the application.
-	 */
 	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ProfileWindow window = new ProfileWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+    EventQueue.invokeLater(new Runnable() {
+      public void run() {
+        try {
+          ProfileWindow window = new ProfileWindow();
+          window.frame.setVisible(true);
+        } catch (Exception e) {
+          e.printStackTrace();
+        }
+      }
+    });
+  }
 	/**
 	 * Create the application.
 	 */

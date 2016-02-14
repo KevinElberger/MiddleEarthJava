@@ -1,8 +1,10 @@
-import java.awt.EventQueue;
+package com.middleearth.java;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
+import java.awt.EventQueue;
 import java.awt.TextArea;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -22,24 +24,19 @@ public class MainWindow {
 	protected String credentials;
 	JTextField textTitle = new JTextField();
 	JTextField textBody = new JTextField();
-	
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					MainWindow window = new MainWindow();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	 public static void main(String[] args) {
+	    EventQueue.invokeLater(new Runnable() {
+	      public void run() {
+	        try {
+	          MainWindow window = new MainWindow();
+	          window.frame.setVisible(true);
+	        } catch (Exception e) {
+	          e.printStackTrace();
+	        }
+	      }
+	    });
+	  }
 	/**
 	 * Create the application.
 	 */

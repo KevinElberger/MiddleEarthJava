@@ -1,3 +1,5 @@
+package com.middleearth.java;
+import com.middleearth.java.*;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -20,11 +22,16 @@ import org.eclipse.swt.events.SelectionAdapter;
 import org.eclipse.swt.events.SelectionEvent;
 
 public class LoginForm {
+  
+    public static void main(String[] args) {
+      new LoginForm();
+    }
 	  /**
 	  * Set up instance variables & URL Parameters for API query.
 	 * @throws IOException 
 	  * 
 	  */
+    MainWindow window = new MainWindow();
 	  Display display = new Display();
 	  Shell shell = new Shell(display);
 	  Label label1,label2;
@@ -109,9 +116,8 @@ public class LoginForm {
 		                // Check if authenticated was passed back by the API.
 		                if(line.contains("authenticated")) {
 		                	shell.dispose();
-		                	MainWindow window = new MainWindow();
-							window.frame.setVisible(true);
-							window.credentials = encodedLogin;
+	                	  window.frame.setVisible(true);
+	                	  window.credentials = encodedLogin;
 		                }		           
 		            }
       	  		  
@@ -136,8 +142,4 @@ public class LoginForm {
 		  }
 		  	display.dispose();
 		  }
-	  
-	  public static void main(String[] args) {
-	     new LoginForm();
-	  }
 }
