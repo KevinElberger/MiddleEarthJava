@@ -9,11 +9,7 @@
     <property name="main-class" value="com.middleearth.java.LoginForm"/>
 
 	<path id="application" location="${jar.dir}/${ant.project.name}.jar"/>
-	<path id="project-classpath">
-		<fileset dir="/home/kevin/.p2/pool/plugins" includes="*.jar" />
-		<fileset dir="/home/kevin/Downloads/" includes="*.jar" />
-		<fileset dir="/home/kevin/Downloads/commons-codec-1.10" includes="*.jar" />
-	</path>
+	<path id="classpath" location="${classes.dir}"/>
 	
 	<target name="clean">
 		<delete dir="bin" />
@@ -22,23 +18,47 @@
 	
 	<target name="compile" depends="clean">
 		<mkdir dir="${classes.dir}" />
-		<javac srcdir="${src.dir}" destdir="${classes.dir}">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" includeantruntime="false">
 			<classpath location="lib/commons-codec-1.10.jar" />
+			<classpath location="lib/jcalendar-1.4.jar" />
+			<classpath location="lib/json-20090211.jar" />
 			<classpath location="lib/org.eclipse.e4.ui.css.swt_0.2.12.0.v20150511-1003.jar" />
+			<classpath location="lib/org.eclipse.e4.ui.css.swt.theme_0.10.0.v20150422-0725.jar" />
+			<classpath location="lib/org.eclipse.e4.ui.swt.gtk_1.0.1.v20150702-1529.jar" />
+			<classpath location="lib/org.eclipse.e4.ui.workbench.addons.swt_1.2.0.v20150512-1414.jar" />
+			<classpath location="lib/org.eclipse.e4.ui.workbench.renderers.swt_0.13.0.v20150901-1347.jar" />
+			<classpath location="lib/org.eclipse.e4.ui.workbench.swt_0.13.0.v20150504-0621.jar" />
 			<classpath location="lib/org.eclipse.swt_3.104.1.v20150825-0743.jar" />
-			<classpath location="lib/org.eclipse.wb.swt.widgets.baseline_1.8.0.r45x201506110827.jar" />
 			<classpath location="lib/org.eclipse.swt.gtk.linux.x86_64_3.104.1.v20150825-0743.jar" />
+			<classpath location="lib/org.eclipse.wb.rcp.swing2swt_1.8.0.r45x201506110827.jar" />
+			<classpath location="lib/org.eclipse.wb.rcp.SWT_AWT_1.8.0.r45x201506110828.jar" />
+			<classpath location="lib/org.eclipse.wb.swt_1.8.0.r45x201506110825.jar" />
+			<classpath location="lib/org.eclipse.wb.swt.widgets.baseline_1.8.0.r45x201506110827.jar" />
     	</javac>
 	</target>
 	
 	<target name="jar" depends="compile">
 		<mkdir dir="${jar.dir}"/>
 		<jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${classes.dir}">
+	    	<restrict>
+        		<not>
+            		<or>
+                		<name name="**/*.RSA"/>
+                		<name name="**/*.SF"/>
+                		<name name="**/*.DSA"/>
+            		</or>
+        		</not>
+        		<archives>
+            		<zips>
+                		<fileset dir="${lib.dir}" includes="**/*.jar"/>
+            		</zips>
+        		</archives>
+    		</restrict>
 		<manifest>
-        	<attribute name="Built-By" value="Kevin Elberger"/>
-        	<attribute name="Main-Class" value="${main-class}"/>
-        	<attribute name="Class-Path" value="${lib.dir}"/>
-     	</manifest>
+        		<attribute name="Built-By" value="Kevin Elberger"/>
+        		<attribute name="Main-Class" value="${main-class}"/>
+        		<attribute name="Class-Path" value="${lib.dir}" />
+     		</manifest>
 		</jar>	
 	</target>
 	

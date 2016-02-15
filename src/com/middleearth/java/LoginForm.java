@@ -1,5 +1,4 @@
 package com.middleearth.java;
-import com.middleearth.java.*;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
